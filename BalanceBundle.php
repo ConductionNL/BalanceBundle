@@ -1,9 +1,9 @@
 <?php
 
-// Conduction/CommonGroundBundle/CommonGroundBundle.php
+// Conduction/CommonGroundBundle/BalanceBundle.php
 
 /*
- * This file is part of the Conduction Common Ground Bundle
+ * This file is part of the Conduction Balance Bundle
  *
  * (c) Conduction <info@conduction.nl>
  *
@@ -15,6 +15,6 @@ namespace Conduction\CommonGroundBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class CommonGroundBundle extends Bundle
+class BalanceBundle extends Bundle
 {
 }
