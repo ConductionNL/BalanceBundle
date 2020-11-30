@@ -68,9 +68,9 @@ class BalanceService
     }
 
     /**
-     * This function removes money from an acount
+     * This function give the current balance from an acount
      *
-     * @parameter $acount string the acount that needs to be collected
+     * @parameter $resource string of the acount that needs to be collected
      *
      * @returns Money the current balance of an acount, EUR 0 if no balance could be established
      */
