@@ -30,7 +30,7 @@ class BalanceService
      *
      * @returns boolean true if the transaction was succesfull, false otherwise
      */
-    public function credit(Money $amount, string $resource, string $name)
+    public function addCredit(Money $amount, string $resource, string $name)
     {
         // We can actually always add money, so no checks requered here
         $amount = $amount->getAmount()*100;
@@ -48,7 +48,7 @@ class BalanceService
      *
      * @returns boolean true if the transaction was succesfull, false otherwise
      */
-    public function credit(Money $amount, string $resource, string $name)
+    public function removeCredit(Money $amount, string $resource, string $name)
     {
         // If the resource has no acount it can't have a credit limit, so we wont be able to remove money
         if(!$acount = $this->getAcount($resource)){
@@ -78,10 +78,10 @@ class BalanceService
     {
         if($acount = $this->getAcount($resource)){
             $amount = $acount['balance']/100;
-            $return new Money($amount, new Currency($acount['currency']));
+            return new Money($amount, new Currency($acount['currency']));
         }
         else{
-            $return new Money(0, new Currency('EUR'));
+            return new Money(0, new Currency('EUR'));
         }
 
     }

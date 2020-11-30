@@ -19,7 +19,7 @@
 		}
 	],
 	"require" : {
-		"conduction/commongroundbundle": "dev-main",
+		"conduction/commongroundbundle": "dev-master || dev-symfony51",
 		"moneyphp/money": "^3.1.0"
 	},
 	"autoload" : {
