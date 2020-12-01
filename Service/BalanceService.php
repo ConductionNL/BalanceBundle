@@ -6,6 +6,9 @@ namespace Conduction\BalanceBundle\Service;
 
 use Conduction\CommonGroundBundle\Service\CommonGroundService;
 use Money\Money;
+use Money\Currency;
+use Money\Currencies\ISOCurrencies;
+use Money\Formatter\IntlMoneyFormatter;
 
 class BalanceService
 {
@@ -33,7 +36,7 @@ class BalanceService
     public function addCredit(Money $amount, string $resource, string $name)
     {
         // We can actually always add money, so no checks requered here
-        $amount = $amount->getAmount()*100;
+        $amount = (int)$amount->getAmount();
         $this->commonGroundService->createResource(["credit"=>$amount,"resource"=>$resource,"name"=>$name], ["component"=>"bare","type"=>"payments"]);
 
         return true;
@@ -56,12 +59,13 @@ class BalanceService
         }
 
         // Lets see if the transaction would pass the credit limit
-        $newBalance = $acount['balance'] - $amount->getAmount()/100;
+        $newBalance = $acount['balance'] - $amount->getAmount();
         if(abs($newBalance) >  $acount['creditLimit']){
             return false;
         }
 
-        $amount = $amount->getAmount()*100;
+        $amount = $amount->getAmount();
+
         $this->commonGroundService->createResource(["debit"=>$amount,"resource"=>$resource,"name"=>$name], ["component"=>"bare","type"=>"payments"]);
 
         return true;
@@ -77,8 +81,14 @@ class BalanceService
     public function getBalance(string $resource)
     {
         if($acount = $this->getAcount($resource)){
-            $amount = $acount['balance']/100;
-            return new Money($amount, new Currency($acount['currency']));
+            $amount = $acount['balance'];
+
+            $currencies = new ISOCurrencies();
+
+            $numberFormatter = new \NumberFormatter('en_EU', \NumberFormatter::CURRENCY);
+            $moneyFormatter = new IntlMoneyFormatter($numberFormatter, $currencies);
+
+            return $moneyFormatter->format(new Money($amount, new Currency($acount['currency'])));
         }
         else{
             return new Money(0, new Currency('EUR'));
@@ -98,10 +108,10 @@ class BalanceService
         $list = $this->commonGroundService->getResourceList(["component"=>"bare","type"=>"acounts"],["resource"=> $resource])['hydra:member'];
 
         if(count($list) > 0){
-           return $list[0];
+            return $list[0];
         }
         else{
-           return false;
+            return false;
         }
     }
 }
