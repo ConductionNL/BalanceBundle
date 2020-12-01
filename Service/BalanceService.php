@@ -60,7 +60,7 @@ class BalanceService
 
         // Lets see if the transaction would pass the credit limit
         $newBalance = $acount['balance'] - $amount->getAmount();
-        if(abs($newBalance) >  $acount['creditLimit']){
+        if(abs($newBalance) <  $acount['creditLimit']){
             return false;
         }
 
