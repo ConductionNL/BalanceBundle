@@ -59,12 +59,12 @@ class BalanceService
         }
 
         // Lets see if the transaction would pass the credit limit
-        $newBalance = $acount['balance'] - $amount->getAmount();
+        $newBalance = $acount['balance'] - (int)$amount->getAmount();
         if(abs($newBalance) <  $acount['creditLimit']){
             return false;
         }
 
-        $amount = $amount->getAmount();
+        $amount = (int)$amount->getAmount();
 
         $this->commonGroundService->createResource(["debit"=>$amount,"resource"=>$resource,"name"=>$name], ["component"=>"bare","type"=>"payments"]);
 
