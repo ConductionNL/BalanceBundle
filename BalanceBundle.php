@@ -11,7 +11,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Conduction\CommonGroundBundle;
+namespace Conduction\BalanceBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

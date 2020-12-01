@@ -1,13 +1,13 @@
 <?php
 
-namespace Conduction\CommonGroundBundle\DependencyInjection;
+namespace Conduction\BalanceBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class CommonGroundExtension extends Extension
+class BalanceExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {
