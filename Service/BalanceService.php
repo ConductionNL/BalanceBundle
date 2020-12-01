@@ -95,7 +95,7 @@ class BalanceService
      */
     public function getAcount(string $resource)
     {
-        $list = $this->commonGroundService->getResourceList(["component"=>"bare","type"=>"acounts"],["resource"=>"bare",$resource]);
+        $list = $this->commonGroundService->getResourceList(["component"=>"bare","type"=>"acounts"],["resource"=> $resource])['hydra:member'];
 
         if(count($list) > 0){
            return $list[0];
