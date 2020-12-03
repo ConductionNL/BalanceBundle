@@ -188,7 +188,7 @@ class BalanceService
         ];
 
         $headers = [
-            'Authorization' => 'Bearer'.$this->params->get('app_mollie_key'),
+            'Authorization' => 'Bearer '.$this->params->get('app_mollie_key'),
             'Accept'        => 'application/json',
         ];
 
@@ -226,7 +226,7 @@ class BalanceService
     public function processMolliePayment(string $id, string $resource)
     {
         $headers = [
-            'Authorization' => 'Bearer'.$this->params->get('app_mollie_key'),
+            'Authorization' => 'Bearer '.$this->params->get('app_mollie_key'),
             'Accept'        => 'application/json',
         ];
 
