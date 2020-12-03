@@ -269,7 +269,7 @@ class BalanceService
 
             $templateAmount = $amount / 100;
 
-            $object['amount'] = $amount;
+            $object['amount'] = $templateAmount;
             $object['reference'] = $invoice['reference'];
             $object['status'] = $response['status'];
 
