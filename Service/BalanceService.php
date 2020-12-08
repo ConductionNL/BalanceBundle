@@ -250,14 +250,14 @@ class BalanceService
             $this->addCredit(Money::EUR($amount), $resource, $resourceObject['name']);
 
             $item = [];
-            $item['name'] = 'Checking Credit';
+            $item['name'] = 'Credit';
             $item['quantity'] = 1;
             $item['price'] = strval($amount / 100);
             $item['priceCurrency'] = 'EUR';
 
             $invoice = [];
             $invoice['customer'] = $resource;
-            $invoice['name'] = 'Checking wallet funds';
+            $invoice['name'] = 'Wallet funds';
             $invoice['items'][] = $item;
             $invoice['targetOrganization'] = $resource;
             $invoice['price'] = strval($amount / 100);
@@ -272,6 +272,7 @@ class BalanceService
             $object['amount'] = $templateAmount;
             $object['reference'] = $invoice['reference'];
             $object['status'] = $response['status'];
+            $object['invoice'] = $invoice;
 
             return $object;
         } else {
