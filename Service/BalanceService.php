@@ -221,7 +221,7 @@ class BalanceService
      * @param string $id id provided by mollie.
      * @param string $resource uri of the resource
      *
-     * @return array array containing if successful: amount(amount added to account in whole euros eg: 10), reference(reference number of invoice) and status(payment status) if payment not successful it returns object with status(payment status)
+     * @return array array containing if successful: amount(amount added to account in whole euros eg: 10), reference(reference number of invoice), invoice(invoice object created) and status(payment status) if payment not successful it returns object with status(payment status)
      */
     public function processMolliePayment(string $id, string $resource)
     {
