@@ -251,6 +251,7 @@ class BalanceService
 
             $item = [];
             $item['name'] = 'Credit';
+            $item['description'] = 'Credit for wallet';
             $item['quantity'] = 1;
             $item['price'] = strval($amount / 100);
             $item['priceCurrency'] = 'EUR';
